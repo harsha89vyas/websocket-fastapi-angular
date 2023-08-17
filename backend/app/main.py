@@ -15,8 +15,8 @@ logger = logging.getLogger("FastAPI app")
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
-#r = redis.from_url(os.environ.get("REDIS_URL"))
-r = redis.from_url('redis://:password@localhost:6379')
+r = redis.from_url(os.environ.get("REDIS_TLS_URL"))
+#r= redis.from_url('redis://:password@localhost:6379')
 #r = redis.from_url('rediss://:pd5dfa9bf22efd0213281d9afcc4ee18a7fc74ddaedaa738780c5f98db4212d1e@ec2-54-235-175-51.compute-1.amazonaws.com:26710', ssl=False)
 
 

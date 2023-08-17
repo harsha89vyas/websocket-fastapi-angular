@@ -4,6 +4,7 @@ from typing import Any, Coroutine, List, Tuple
 import io
 import time
 import re
+import os
 
 from fastapi import UploadFile
 import asyncio 
@@ -22,7 +23,8 @@ import util.config as config
 from util.model import TemplateMappingList, TemplateMapping, TemplateMappingCode, TransformValue
 import redis
 
-r = redis.from_url('redis://:password@localhost:6379')
+r = redis.from_url(os.environ.get("REDIS_TLS_URL"))
+#r = redis.from_url('redis://:password@localhost:6379')
 class Processor:
     def __init__(self, session):
         self.session = session
