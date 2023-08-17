@@ -1,0 +1,4 @@
+cache-dir = "/Users/harshavyaspalli/Code/websocket-fastapi-angular"
+[virtualenvs]
+create = true
+in-project = true

@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "task-zero-llm"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "task_zero_llm"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "^0.0.258"
+openai = "^0.27.8"
+pandas = "^2.0.3"
+tabulate = "^0.9.0"
+tiktoken = "^0.4.0"
+fastapi = "^0.101.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+python-multipart = "^0.0.6"
+redis = "^5.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+watchdog = "^3.0.0"
+ptvsd = "^4.3.2"
+ipykernel = "^6.25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

@@ -1,12 +1,36 @@
-<h2>Send a message to the server:</h2>
+<h2>Upload Files</h2>
+<h3>Table File</h3>
+<input type="file" class="file-upload" (change)="uploadTableFile($event)">
+<h3>Template File</h3>
+<input type="file" class="file-upload" (change)="uploadTemplateFile($event)">
+
+<input type="button" value="Start Processing" (click)="startProcessing()">
+<!-- <h2>Send a message to the server:</h2>
 <form (ngSubmit)="sendMessage(message); message = ''">
   <input [(ngModel)]="message" name="message" type="text" autocomplete="off" />
   <button type="submit" style="margin-left: 10px;">Send</button>
-</form>
+</form> -->
 
-<h2>Received messages from the server:</h2>
+<h2>Messages from the server:</h2>
+<div style="max-height: 200px; overflow: scroll;">
 <ul>
   <li *ngFor="let data of webSocketService.receivedData">
-    {{ data.time }}: {{ data.message }}
+    {{ data.message }}
   </li>
 </ul>
+</div>
+<div *ngIf="webSocketService.promptData?.message">
+  <h2>Question from the assistant at {{webSocketService.promptData.time}}</h2>
+  <div style="white-space: pre;">
+    {{webSocketService.promptData.message}}
+  </div>
+  <h2>Response to the assistant</h2>
+  <div>
+    <form (ngSubmit)="sendMessage(message); message = ''">
+      <textarea [(ngModel)]="message" name="message" type="text" autocomplete="off" style="height: 500px;width:500px"></textarea>
+      <button type="submit" style="margin-left: 10px;">Send</button>
+    </form>
+  </div>
+</div>
+
+
