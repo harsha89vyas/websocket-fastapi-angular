@@ -7,6 +7,7 @@ from typing import Annotated
 from fastapi import FastAPI, File, Form, WebSocket, WebSocketDisconnect, Request, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import redis
 from util.process import Processor
 
@@ -14,6 +15,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("FastAPI app")
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 r = redis.from_url(os.environ.get("REDIS_TLS_URL"))
 #r= redis.from_url('redis://:password@localhost:6379')
